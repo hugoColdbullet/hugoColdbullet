@@ -98,20 +98,39 @@
   .contact-list{margin-top:34px;list-style:none;color:#e6eef3;line-height:2.2}
   form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   form .full{grid-column:1/-1}
-  label{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#a9bccb;margin-bottom:8px}
-  input,select,textarea{width:100%;padding:14px;background:var(--navy-2);border:1px solid #2c536d;color:#fff;font:inherit;border-radius:2px}
-  textarea{min-height:130px;resize:vertical}
-  form .btn{border:0;cursor:pointer;font-size:16px;justify-self:start}
+  label{display:block;font-size:17px;color:#fff;margin-bottom:10px}
+  input,select,textarea{width:100%;padding:16px 18px;background:#fff;border:1px solid #fff;color:var(--ink);font:inherit;font-size:18px;border-radius:2px}
+  input:focus,select:focus,textarea:focus{outline:3px solid var(--mint);outline-offset:1px}
+  textarea{min-height:170px;resize:vertical}
+  form .btn{border:0;cursor:pointer;font-size:19px;justify-self:start;padding:20px 34px}
+  .form-note{color:#c6d3dc;font-size:15px;margin-top:-2px}
+  .company{margin-top:60px;padding-top:44px;border-top:1px solid #2c536d;color:#c6d3dc;font-size:17px;line-height:1.75}
+  .company strong{display:block;color:#fff;font-size:17px;letter-spacing:.02em;margin-bottom:18px}
+  .company small{display:block;margin-top:18px;font-size:15px}
+  .scope-note{margin-top:46px;color:var(--muted);font-size:16px;max-width:1100px}
 
-  footer{background:#0a1f2d;color:#9fb2c0;font-size:14px}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;padding-top:30px;padding-bottom:30px;flex-wrap:wrap}
+  .why{background:var(--navy);color:#fff}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+  .why h2{color:#fff;margin:26px 0 30px}
+  .why .eyebrow{color:var(--mint)}
+  .why-lead{color:#c6d3dc;font-size:19px;max-width:640px}
+  .why-list{list-style:none}
+  .why-list li{display:grid;grid-template-columns:52px 1fr;padding:0 0 34px;margin-bottom:34px;border-bottom:1px solid #2c536d}
+  .why-list li:last-child{border-bottom:0;margin-bottom:0}
+  .why-list span{color:var(--mint);font-size:17px;padding-top:6px}
+  .why-list h3{font-size:28px;font-weight:400;margin-bottom:10px}
+  .why-list p{color:#c6d3dc;font-size:18px}
+
+  footer{background:#fff;color:var(--muted);font-size:16px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;padding-top:44px;padding-bottom:44px;flex-wrap:wrap}
+  footer .foot-link{color:var(--teal);font-size:18px}
 
   @media (max-width:1100px){
     nav{position:absolute;top:120px;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;padding:24px 48px;gap:20px;border-bottom:1px solid var(--line);display:none}
     nav.open{display:flex}
     .menu-btn{display:block}
     .cards,.steps{grid-template-columns:1fr 1fr}
-    .about,.quote-grid{grid-template-columns:1fr;gap:40px}
+    .about,.quote-grid,.why-grid{grid-template-columns:1fr;gap:40px}
   }
   @media (max-width:700px){
     .wrap{padding:0 16px}
@@ -198,6 +217,7 @@
       </ul>
     </article>
   </div>
+  <p class="scope-note" data-pt="O âmbito, a disponibilidade e os prazos são definidos para cada pedido. Os serviços especializados são articulados com parceiros e entidades competentes, quando necessário." data-en="Scope, availability and timing are defined for each request. Specialised services are coordinated with partners and the competent authorities when required.">O âmbito, a disponibilidade e os prazos são definidos para cada pedido. Os serviços especializados são articulados com parceiros e entidades competentes, quando necessário.</p>
 </div></section>
 
 <div class="banner"><div class="wrap" data-pt="Ship chandling / Crew change / Suporte logístico" data-en="Ship chandling / Crew change / Logistics support">Ship chandling / Crew change / Suporte logístico</div></div>
@@ -212,6 +232,21 @@
     <div><strong>24/7</strong><span data-pt="Contacto durante a escala" data-en="Contact during the port call">Contacto durante a escala</span></div>
     <div><strong data-pt="Luanda" data-en="Luanda">Luanda</strong><span data-pt="Base de operações" data-en="Operations base">Base de operações</span></div>
     <div><strong>1</strong><span data-pt="Ponto de contacto por operação" data-en="Point of contact per operation">Ponto de contacto por operação</span></div>
+  </div>
+</div></section>
+
+<section class="why" id="porque"><div class="wrap">
+  <div class="why-grid">
+    <div>
+      <div class="eyebrow" data-pt="Porquê a Wavelela" data-en="Why Wavelela">Porquê a Wavelela</div>
+      <h2 data-pt="A confiança constrói-se<br>em cada etapa." data-en="Trust is built<br>at every step.">A confiança constrói-se<br>em cada etapa.</h2>
+      <p class="why-lead" data-pt="A experiência da equipa traduz-se numa forma de trabalhar próxima, rigorosa e transparente." data-en="Our team's experience translates into a close, rigorous and transparent way of working.">A experiência da equipa traduz-se numa forma de trabalhar próxima, rigorosa e transparente.</p>
+    </div>
+    <ul class="why-list">
+      <li><span>01</span><div><h3 data-pt="Experiência aplicada" data-en="Applied experience">Experiência aplicada</h3><p data-pt="Conhecimento do sector para compreender as necessidades do navio e da tripulação." data-en="Sector knowledge to understand the needs of the vessel and its crew.">Conhecimento do sector para compreender as necessidades do navio e da tripulação.</p></div></li>
+      <li><span>02</span><div><h3 data-pt="Comunicação directa" data-en="Direct communication">Comunicação directa</h3><p data-pt="Confirmação de etapas e informação atempada sobre alterações ou constrangimentos." data-en="Step confirmations and timely information on changes or constraints.">Confirmação de etapas e informação atempada sobre alterações ou constrangimentos.</p></div></li>
+      <li><span>03</span><div><h3 data-pt="Rigor na execução" data-en="Rigorous execution">Rigor na execução</h3><p data-pt="Atenção às especificações, prazos e documentação de cada pedido." data-en="Attention to the specifications, deadlines and documents of every request.">Atenção às especificações, prazos e documentação de cada pedido.</p></div></li>
+    </ul>
   </div>
 </div></section>
 
@@ -244,32 +279,41 @@
 <section class="quote" id="cotacao"><div class="wrap">
   <div class="quote-grid">
     <div>
-      <div class="eyebrow" data-pt="Preparar cotação" data-en="Request a quote">Preparar cotação</div>
-      <h2 style="margin-top:18px" data-pt="Fale-nos da sua próxima escala." data-en="Tell us about your next port call.">Fale-nos da sua próxima escala.</h2>
-      <p data-pt="Envie os detalhes e respondemos com uma proposta ajustada ao seu pedido." data-en="Send the details and we will reply with a proposal tailored to your request.">Envie os detalhes e respondemos com uma proposta ajustada ao seu pedido.</p>
-      <ul class="contact-list">
-        <li>✉ geral@wavelela.com</li>
-        <li>☎ +244 900 000 000</li>
-        <li>⌖ Luanda, Angola</li>
-      </ul>
+      <div class="eyebrow" data-pt="A sua próxima operação" data-en="Your next operation">A sua próxima operação</div>
+      <h2 style="margin-top:26px" data-pt="Comecemos pelo<br>que precisa." data-en="Let's start with<br>what you need.">Comecemos pelo<br>que precisa.</h2>
+      <p data-pt="Reúna os dados essenciais da escala num pedido pronto para partilhar com a equipa comercial." data-en="Gather the key details of the port call in a request ready to share with our sales team.">Reúna os dados essenciais da escala num pedido pronto para partilhar com a equipa comercial.</p>
+      <div class="company">
+        <strong>WAVELELA</strong>
+        Luanda, Angola<br>
+        Vila Alice · Prédio n.º 100<br>
+        <span data-pt="5.º andar, apartamento A" data-en="5th floor, apartment A">5.º andar, apartamento A</span>
+        <small>NIF 5001562550</small>
+        <small>✉ geral@wavelela.com · ☎ +244 900 000 000</small>
+      </div>
     </div>
     <form id="quoteForm">
       <div><label data-pt="Nome" data-en="Name">Nome</label><input name="nome" required></div>
       <div><label data-pt="Empresa" data-en="Company">Empresa</label><input name="empresa"></div>
-      <div><label>E-mail</label><input type="email" name="email" required></div>
-      <div><label data-pt="Navio" data-en="Vessel">Navio</label><input name="navio"></div>
+      <div class="full"><label data-pt="E-mail profissional" data-en="Business e-mail">E-mail profissional</label><input type="email" name="email" required></div>
       <div><label data-pt="Serviço" data-en="Service">Serviço</label>
         <select name="servico"><option>Ship chandling</option><option>Crew change</option><option data-pt="Suporte logístico" data-en="Logistics support">Suporte logístico</option></select></div>
-      <div><label>ETA</label><input type="date" name="eta"></div>
-      <div class="full"><label data-pt="Detalhes do pedido" data-en="Request details">Detalhes do pedido</label><textarea name="detalhes"></textarea></div>
-      <button class="btn full" type="submit" data-pt="Enviar pedido" data-en="Send request">Enviar pedido</button>
+      <div><label data-pt="Porto / local" data-en="Port / location">Porto / local</label><input name="porto"></div>
+      <div><label data-pt="Navio" data-en="Vessel">Navio</label><input name="navio"></div>
+      <div><label data-pt="Data prevista" data-en="Expected date">Data prevista</label><input type="date" name="data"></div>
+      <div class="full"><label data-pt="Necessidades e especificações" data-en="Needs and specifications">Necessidades e especificações</label><textarea name="necessidades"></textarea></div>
+      <button class="btn full" type="submit" data-pt="Descarregar pedido" data-en="Download request">Descarregar pedido</button>
+      <p class="form-note full" data-pt="Este formulário prepara um ficheiro no seu dispositivo. O pedido não é enviado nem os dados guardados no site." data-en="This form prepares a file on your device. The request is not sent and no data is stored on the site.">Este formulário prepara um ficheiro no seu dispositivo. O pedido não é enviado nem os dados guardados no site.</p>
     </form>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <span>© <span id="yr"></span> WAVELELA — Maritime &amp; Logistics</span>
-  <span data-pt="Comércio · Suporte logístico · Prestação de serviços" data-en="Trading · Logistics support · Services">Comércio · Suporte logístico · Prestação de serviços</span>
+  <a href="#inicio" class="logo">
+    <div class="logo-mark">W</div>
+    <div><div class="logo-name">WAVELELA</div><div class="logo-sub">MARITIME &amp; LOGISTICS</div></div>
+  </a>
+  <div>© <span id="yr"></span> Wavelela.<br>Comércio, Suporte Logístico &amp; Prestação de Serviços, Lda.</div>
+  <a class="foot-link" href="#cotacao" data-pt="Preparar um pedido" data-en="Prepare a request">Preparar um pedido</a>
 </div></footer>
 
 <script>
@@ -285,8 +329,13 @@
   document.getElementById('quoteForm').addEventListener('submit', e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target));
-    const body = Object.entries(d).map(([k, v]) => k + ': ' + v).join('\n');
-    location.href = 'mailto:geral@wavelela.com?subject=' + encodeURIComponent('Pedido de cotação - ' + (d.navio || d.empresa || '')) + '&body=' + encodeURIComponent(body);
+    const labels = {nome:'Nome', empresa:'Empresa', email:'E-mail', servico:'Serviço', porto:'Porto / local', navio:'Navio', data:'Data prevista', necessidades:'Necessidades e especificações'};
+    const body = 'PEDIDO DE COTAÇÃO — WAVELELA\n\n' + Object.entries(d).map(([k, v]) => (labels[k] || k) + ': ' + v).join('\n') + '\n\nEnviar para: geral@wavelela.com';
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([body], {type: 'text/plain;charset=utf-8'}));
+    a.download = 'pedido-wavelela-' + (d.navio || 'cotacao').replace(/\s+/g, '-').toLowerCase() + '.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
   });
 </script>
 </body>
