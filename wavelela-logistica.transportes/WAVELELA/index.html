@@ -107,6 +107,11 @@
   .company{margin-top:60px;padding-top:44px;border-top:1px solid #2c536d;color:#c6d3dc;font-size:17px;line-height:1.75}
   .company strong{display:block;color:#fff;font-size:17px;letter-spacing:.02em;margin-bottom:18px}
   .company small{display:block;margin-top:18px;font-size:15px}
+  .track{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:260px;flex-shrink:0}
+  .track .btn{text-align:center}
+  .track-thumb{display:block;border:1px solid var(--line);border-radius:2px;overflow:hidden;opacity:.85;transition:opacity .2s}
+  .track-thumb:hover{opacity:1}
+  .track-thumb img{display:block;width:100%;height:auto}
   .scope-note{margin-top:46px;color:var(--muted);font-size:16px;max-width:1100px}
 
   .why{background:var(--navy);color:#fff}
@@ -141,6 +146,7 @@
     .hero{min-height:560px}.hero p{font-size:18px}.hero .actions{flex-direction:column;align-items:flex-start;gap:16px}
     section{padding:70px 0}
     .head-row{flex-direction:column;align-items:flex-start}
+    .track{width:100%;max-width:320px}
     .cards,.steps,.info,.stats,form{grid-template-columns:1fr}
     .step{border-left:0;border-top:1px solid #d3dce2;padding-left:0}
   }
@@ -264,7 +270,10 @@
 <section id="info"><div class="wrap">
   <div class="eyebrow" data-pt="Informação útil" data-en="Useful information">Informação útil</div>
   <div class="head-row"><h2 data-pt="O que preparar antes da escala." data-en="What to prepare before the port call.">O que preparar antes da escala.</h2>
-    <a class="btn" href="https://www.worldmonitor.app/dashboard?zoom=1.00&amp;view=global&amp;timeRange=7d&amp;layers=waterways%2CtradeRoutes" target="_blank" rel="noopener" data-pt="Rastreio Marítimo ↗" data-en="Maritime Tracking ↗">Rastreio Marítimo ↗</a>
+    <div class="track">
+      <a class="btn" href="https://www.worldmonitor.app/dashboard?zoom=1.00&amp;view=global&amp;timeRange=7d&amp;layers=waterways%2CtradeRoutes" target="_blank" rel="noopener" data-pt="Rastreio Marítimo ↗" data-en="Maritime Tracking ↗">Rastreio Marítimo ↗</a>
+      <a class="track-thumb" href="https://www.worldmonitor.app/dashboard?zoom=1.00&amp;view=global&amp;timeRange=7d&amp;layers=waterways%2CtradeRoutes" target="_blank" rel="noopener"><img src="img/rastreio-maritimo.jpg" alt="Mapa de rotas comerciais marítimas" loading="lazy" width="400" height="187"></a>
+    </div>
   </div>
   <div class="info">
     <div>
