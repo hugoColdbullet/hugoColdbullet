@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAVELELA — Maritime & Logistics | Luanda, Angola</title>
+<meta name="description" content="Wavelela: ship chandling, crew change e suporte logístico em Angola.">
+<style>
+  :root{
+    --navy:#0f2a3d; --navy-2:#16384f; --teal:#0f7a6c; --teal-2:#0b6457; --mint:#7fd6c8;
+    --ink:#1b3447; --muted:#5b6b78; --line:#e3e8ec; --soft:#f1f4f6; --white:#fff;
+    --max:1500px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--white);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 48px}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal)}
+  .btn{display:inline-block;background:var(--teal);color:#fff;font-weight:700;padding:16px 26px;border-radius:2px;transition:background .2s}
+  .btn:hover{background:var(--teal-2)}
+  .btn-ghost{display:inline-block;color:#fff;font-weight:600;padding:16px 4px;border-bottom:1px solid rgba(255,255,255,.6)}
+
+  /* Top bar */
+  .topbar{background:var(--navy);color:#cfd9e1;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .topbar .wrap{display:flex;justify-content:space-between;padding-top:11px;padding-bottom:11px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:120px}
+  .logo{display:flex;align-items:center;gap:16px}
+  .logo-mark{width:58px;height:58px;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:800}
+  .logo-name{font-size:30px;font-weight:800;letter-spacing:.08em;color:var(--navy);line-height:1}
+  .logo-sub{font-size:13px;letter-spacing:.22em;color:var(--muted);margin-top:8px}
+  nav{display:flex;align-items:center;gap:34px}
+  nav a.link{font-size:17px;color:var(--ink)}
+  nav a.link:hover{color:var(--teal)}
+  .lang{border:1px solid var(--line);background:#fff;padding:10px 12px;font-size:16px;cursor:pointer;color:var(--ink)}
+  .menu-btn{display:none;background:none;border:0;font-size:28px;cursor:pointer;color:var(--navy)}
+
+  /* Hero */
+  .hero{position:relative;min-height:640px;display:flex;align-items:center;color:#fff;
+    background:linear-gradient(90deg,rgba(15,42,61,.92) 0%,rgba(15,42,61,.7) 45%,rgba(15,42,61,.15) 100%),
+               url("img/hero.jpg") center/cover no-repeat, linear-gradient(135deg,#1d4a66,#0f2a3d);}
+  .hero .wrap{width:100%}
+  .hero .eyebrow{color:var(--mint)}
+  .hero h1{font-size:clamp(40px,5.2vw,74px);font-weight:400;line-height:1.12;letter-spacing:-.02em;margin:26px 0 30px;max-width:820px}
+  .hero p{font-size:22px;max-width:760px;color:#e6eef3}
+  .hero .actions{display:flex;gap:40px;margin-top:40px;align-items:center}
+
+  /* Sections */
+  section{padding:110px 0}
+  .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin:18px 0 60px}
+  h2{font-size:clamp(32px,3.4vw,48px);font-weight:400;line-height:1.15;color:var(--navy);letter-spacing:-.01em}
+  .link-line{color:var(--teal);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--teal);white-space:nowrap}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+  .card{background:var(--soft);border-top:3px solid var(--teal);padding:50px 40px 46px}
+  .card .num{color:var(--teal);font-size:17px}
+  .card h3{font-size:32px;font-weight:400;color:var(--navy);margin:30px 0 22px}
+  .card p{color:var(--muted);font-size:19px;line-height:1.85}
+  .card ul{margin:24px 0 0 22px;color:var(--muted);font-size:17px;line-height:1.9}
+
+  /* Banner */
+  .banner{position:relative;height:300px;display:flex;align-items:flex-end;color:#fff;padding:0;
+    background:linear-gradient(90deg,rgba(15,42,61,.85),rgba(15,42,61,.25)),url("img/porto.jpg") center/cover no-repeat,linear-gradient(135deg,#1d4a66,#0f2a3d)}
+  .banner .wrap{width:100%;padding-bottom:40px;font-size:16px;letter-spacing:.16em;text-transform:uppercase}
+
+  .about{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start;margin-top:30px}
+  .about p{font-size:19px;color:var(--muted);line-height:1.9}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:70px;border-top:1px solid var(--line);padding-top:40px}
+  .stats strong{display:block;font-size:44px;font-weight:400;color:var(--teal)}
+  .stats span{color:var(--muted)}
+
+  /* Steps */
+  .steps-sec{background:var(--soft)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+  .step{padding:34px 30px;border-left:1px solid #d3dce2}
+  .step:first-child{border-left:0;padding-left:0}
+  .step b{display:block;color:var(--teal);font-size:15px;letter-spacing:.18em;margin-bottom:16px}
+  .step h4{font-size:23px;font-weight:400;color:var(--navy);margin-bottom:12px}
+  .step p{color:var(--muted)}
+
+  /* Info */
+  .info{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+  details{border-top:1px solid var(--line);padding:24px 0}
+  summary{cursor:pointer;font-size:21px;color:var(--navy);list-style:none;display:flex;justify-content:space-between}
+  summary::after{content:"+";color:var(--teal);font-size:26px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin-top:14px;font-size:17px}
+
+  /* Quote */
+  .quote{background:var(--navy);color:#fff}
+  .quote h2{color:#fff}
+  .quote .eyebrow{color:var(--mint)}
+  .quote-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;margin-top:20px}
+  .quote-grid > div p{color:#c6d3dc;font-size:18px;margin-top:22px}
+  .contact-list{margin-top:34px;list-style:none;color:#e6eef3;line-height:2.2}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  form .full{grid-column:1/-1}
+  label{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#a9bccb;margin-bottom:8px}
+  input,select,textarea{width:100%;padding:14px;background:var(--navy-2);border:1px solid #2c536d;color:#fff;font:inherit;border-radius:2px}
+  textarea{min-height:130px;resize:vertical}
+  form .btn{border:0;cursor:pointer;font-size:16px;justify-self:start}
+
+  footer{background:#0a1f2d;color:#9fb2c0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;padding-top:30px;padding-bottom:30px;flex-wrap:wrap}
+
+  @media (max-width:1100px){
+    nav{position:absolute;top:120px;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;padding:24px 48px;gap:20px;border-bottom:1px solid var(--line);display:none}
+    nav.open{display:flex}
+    .menu-btn{display:block}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+    .about,.quote-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:700px){
+    .wrap{padding:0 16px}
+    nav{padding:20px 16px}
+    .topbar .wrap{flex-direction:column;gap:4px;font-size:11px}
+    header .wrap{height:90px} nav{top:90px}
+    .logo-mark{width:46px;height:46px;font-size:30px}.logo-name{font-size:23px}.logo-sub{font-size:10px}
+    .hero{min-height:560px}.hero p{font-size:18px}.hero .actions{flex-direction:column;align-items:flex-start;gap:16px}
+    section{padding:70px 0}
+    .head-row{flex-direction:column;align-items:flex-start}
+    .cards,.steps,.info,.stats,form{grid-template-columns:1fr}
+    .step{border-left:0;border-top:1px solid #d3dce2;padding-left:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span data-pt="Comércio · Suporte logístico · Prestação de serviços" data-en="Trading · Logistics support · Services">Comércio · Suporte logístico · Prestação de serviços</span>
+  <span>Luanda, Angola</span>
+</div></div>
+
+<header><div class="wrap">
+  <a href="#inicio" class="logo">
+    <div class="logo-mark">W</div>
+    <div><div class="logo-name">WAVELELA</div><div class="logo-sub">MARITIME &amp; LOGISTICS</div></div>
+  </a>
+  <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+  <nav>
+    <a class="link" href="#servicos" data-pt="Serviços" data-en="Services">Serviços</a>
+    <a class="link" href="#empresa" data-pt="A empresa" data-en="Company">A empresa</a>
+    <a class="link" href="#como" data-pt="Como trabalhamos" data-en="How we work">Como trabalhamos</a>
+    <a class="link" href="#info" data-pt="Informação útil" data-en="Useful info">Informação útil</a>
+    <button class="lang" id="langBtn">EN</button>
+    <a class="btn" href="#cotacao" data-pt="Preparar cotação" data-en="Request a quote">Preparar cotação</a>
+  </nav>
+</div></header>
+
+<section class="hero" id="inicio"><div class="wrap">
+  <div class="eyebrow" data-pt="Conhecimento local. Atenção à sua operação." data-en="Local knowledge. Focus on your operation.">Conhecimento local. Atenção à sua operação.</div>
+  <h1 data-pt="A sua escala em Angola, acompanhada de perto." data-en="Your port call in Angola, closely followed.">A sua escala em Angola, acompanhada de perto.</h1>
+  <p data-pt="Abastecimento de navios e coordenação de trocas de tripulação, com experiência no sector e uma resposta ajustada a cada pedido." data-en="Ship supply and crew change coordination, with sector experience and a response tailored to every request.">Abastecimento de navios e coordenação de trocas de tripulação, com experiência no sector e uma resposta ajustada a cada pedido.</p>
+  <div class="actions">
+    <a class="btn" href="#cotacao" data-pt="Preparar cotação" data-en="Request a quote">Preparar cotação</a>
+    <a class="btn-ghost" href="#servicos" data-pt="Conhecer os serviços" data-en="Explore our services">Conhecer os serviços</a>
+  </div>
+</div></section>
+
+<section id="servicos"><div class="wrap">
+  <div class="eyebrow" data-pt="Soluções para a sua escala" data-en="Solutions for your port call">Soluções para a sua escala</div>
+  <div class="head-row">
+    <h2 data-pt="O apoio de que precisa.<br>A coordenação que faz a diferença." data-en="The support you need.<br>The coordination that makes a difference.">O apoio de que precisa.<br>A coordenação que faz a diferença.</h2>
+    <a class="link-line" href="#cotacao" data-pt="Preparar um pedido" data-en="Prepare a request">Preparar um pedido</a>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="num">01</div>
+      <h3>Ship chandling</h3>
+      <p data-pt="Mantimentos, consumíveis e sobressalentes, com atenção às especificações e à janela de entrega do navio." data-en="Provisions, consumables and spare parts, matching the vessel's specifications and delivery window.">Mantimentos, consumíveis e sobressalentes, com atenção às especificações e à janela de entrega do navio.</p>
+      <ul>
+        <li data-pt="Provisões e produtos de consumo" data-en="Provisions and consumer goods">Provisões e produtos de consumo</li>
+        <li data-pt="Materiais e sobressalentes sob consulta" data-en="Materials and spares on request">Materiais e sobressalentes sob consulta</li>
+        <li data-pt="Entrega a bordo coordenada" data-en="Coordinated on-board delivery">Entrega a bordo coordenada</li>
+      </ul>
+    </article>
+    <article class="card">
+      <div class="num">02</div>
+      <h3>Crew change</h3>
+      <p data-pt="Articulação dos serviços necessários à entrada e saída de tripulantes, de acordo com o itinerário e os requisitos aplicáveis." data-en="Coordination of the services needed for crew joining and leaving, in line with itinerary and applicable requirements.">Articulação dos serviços necessários à entrada e saída de tripulantes, de acordo com o itinerário e os requisitos aplicáveis.</p>
+      <ul>
+        <li data-pt="Planeamento de deslocações" data-en="Travel planning">Planeamento de deslocações</li>
+        <li data-pt="Coordenação de alojamento e transporte" data-en="Accommodation and transport coordination">Coordenação de alojamento e transporte</li>
+        <li data-pt="Acompanhamento documental" data-en="Document follow-up">Acompanhamento documental</li>
+      </ul>
+    </article>
+    <article class="card">
+      <div class="num">03</div>
+      <h3 data-pt="Suporte logístico" data-en="Logistics support">Suporte logístico</h3>
+      <p data-pt="Um ponto de articulação para os pedidos comerciais e logísticos associados à sua operação." data-en="A single point of coordination for the commercial and logistics requests linked to your operation.">Um ponto de articulação para os pedidos comerciais e logísticos associados à sua operação.</p>
+      <ul>
+        <li data-pt="Levantamento de requisitos" data-en="Requirements gathering">Levantamento de requisitos</li>
+        <li data-pt="Coordenação de fornecedores e parceiros" data-en="Supplier and partner coordination">Coordenação de fornecedores e parceiros</li>
+        <li data-pt="Informação sobre o progresso do serviço" data-en="Service progress updates">Informação sobre o progresso do serviço</li>
+      </ul>
+    </article>
+  </div>
+</div></section>
+
+<div class="banner"><div class="wrap" data-pt="Ship chandling / Crew change / Suporte logístico" data-en="Ship chandling / Crew change / Logistics support">Ship chandling / Crew change / Suporte logístico</div></div>
+
+<section id="empresa"><div class="wrap">
+  <div class="eyebrow" data-pt="Wavelela em Angola" data-en="Wavelela in Angola">Wavelela em Angola</div>
+  <div class="about">
+    <h2 data-pt="Cada operação tem exigências próprias.<br>O nosso trabalho começa por compreendê-las." data-en="Every operation has its own demands.<br>Our work starts by understanding them.">Cada operação tem exigências próprias.<br>O nosso trabalho começa por compreendê-las.</h2>
+    <p data-pt="Somos uma empresa angolana de comércio, suporte logístico e prestação de serviços. A nossa equipa reúne experiência acumulada em ship chandling e crew change para articular fornecimentos, deslocações e intervenientes de cada operação." data-en="We are an Angolan trading, logistics support and services company. Our team brings accumulated experience in ship chandling and crew change to coordinate the supplies, travel and parties involved in each operation.">Somos uma empresa angolana de comércio, suporte logístico e prestação de serviços. A nossa equipa reúne experiência acumulada em ship chandling e crew change para articular fornecimentos, deslocações e intervenientes de cada operação.</p>
+  </div>
+  <div class="stats">
+    <div><strong>24/7</strong><span data-pt="Contacto durante a escala" data-en="Contact during the port call">Contacto durante a escala</span></div>
+    <div><strong data-pt="Luanda" data-en="Luanda">Luanda</strong><span data-pt="Base de operações" data-en="Operations base">Base de operações</span></div>
+    <div><strong>1</strong><span data-pt="Ponto de contacto por operação" data-en="Point of contact per operation">Ponto de contacto por operação</span></div>
+  </div>
+</div></section>
+
+<section class="steps-sec" id="como"><div class="wrap">
+  <div class="eyebrow" data-pt="Como trabalhamos" data-en="How we work">Como trabalhamos</div>
+  <div class="head-row"><h2 data-pt="Um processo simples, do pedido à entrega." data-en="A simple process, from request to delivery.">Um processo simples, do pedido à entrega.</h2></div>
+  <div class="steps">
+    <div class="step"><b>01</b><h4 data-pt="Pedido" data-en="Request">Pedido</h4><p data-pt="Recebemos a lista, o ETA e os requisitos do navio." data-en="We receive the list, ETA and vessel requirements.">Recebemos a lista, o ETA e os requisitos do navio.</p></div>
+    <div class="step"><b>02</b><h4 data-pt="Cotação" data-en="Quotation">Cotação</h4><p data-pt="Preparamos uma proposta clara, com prazos e condições." data-en="We prepare a clear proposal with timing and terms.">Preparamos uma proposta clara, com prazos e condições.</p></div>
+    <div class="step"><b>03</b><h4 data-pt="Coordenação" data-en="Coordination">Coordenação</h4><p data-pt="Articulamos fornecedores, transporte e autorizações." data-en="We coordinate suppliers, transport and clearances.">Articulamos fornecedores, transporte e autorizações.</p></div>
+    <div class="step"><b>04</b><h4 data-pt="Entrega" data-en="Delivery">Entrega</h4><p data-pt="Entrega a bordo e confirmação com a documentação." data-en="On-board delivery and confirmation with documents.">Entrega a bordo e confirmação com a documentação.</p></div>
+  </div>
+</div></section>
+
+<section id="info"><div class="wrap">
+  <div class="eyebrow" data-pt="Informação útil" data-en="Useful information">Informação útil</div>
+  <div class="head-row"><h2 data-pt="O que preparar antes da escala." data-en="What to prepare before the port call.">O que preparar antes da escala.</h2></div>
+  <div class="info">
+    <div>
+      <details open><summary data-pt="Que informação devo enviar?" data-en="What information should I send?">Que informação devo enviar?</summary><p data-pt="Nome do navio, porto, ETA/ETD, agente local e a lista de itens ou tripulantes envolvidos." data-en="Vessel name, port, ETA/ETD, local agent and the list of items or crew involved.">Nome do navio, porto, ETA/ETD, agente local e a lista de itens ou tripulantes envolvidos.</p></details>
+      <details><summary data-pt="Com que antecedência?" data-en="How far in advance?">Com que antecedência?</summary><p data-pt="Recomendamos o envio do pedido com pelo menos 72 horas de antecedência." data-en="We recommend sending your request at least 72 hours in advance.">Recomendamos o envio do pedido com pelo menos 72 horas de antecedência.</p></details>
+    </div>
+    <div>
+      <details><summary data-pt="Em que portos operam?" data-en="Which ports do you serve?">Em que portos operam?</summary><p data-pt="Luanda e outros portos angolanos, sob consulta." data-en="Luanda and other Angolan ports, on request.">Luanda e outros portos angolanos, sob consulta.</p></details>
+      <details><summary data-pt="Que documentos são necessários no crew change?" data-en="Which documents are needed for crew change?">Que documentos são necessários no crew change?</summary><p data-pt="Passaporte, cédula marítima, carta de garantia e itinerário. Confirmamos os requisitos aplicáveis a cada caso." data-en="Passport, seaman's book, letter of guarantee and itinerary. We confirm the requirements for each case.">Passaporte, cédula marítima, carta de garantia e itinerário. Confirmamos os requisitos aplicáveis a cada caso.</p></details>
+    </div>
+  </div>
+</div></section>
+
+<section class="quote" id="cotacao"><div class="wrap">
+  <div class="quote-grid">
+    <div>
+      <div class="eyebrow" data-pt="Preparar cotação" data-en="Request a quote">Preparar cotação</div>
+      <h2 style="margin-top:18px" data-pt="Fale-nos da sua próxima escala." data-en="Tell us about your next port call.">Fale-nos da sua próxima escala.</h2>
+      <p data-pt="Envie os detalhes e respondemos com uma proposta ajustada ao seu pedido." data-en="Send the details and we will reply with a proposal tailored to your request.">Envie os detalhes e respondemos com uma proposta ajustada ao seu pedido.</p>
+      <ul class="contact-list">
+        <li>✉ geral@wavelela.co.ao</li>
+        <li>☎ +244 900 000 000</li>
+        <li>⌖ Luanda, Angola</li>
+      </ul>
+    </div>
+    <form id="quoteForm">
+      <div><label data-pt="Nome" data-en="Name">Nome</label><input name="nome" required></div>
+      <div><label data-pt="Empresa" data-en="Company">Empresa</label><input name="empresa"></div>
+      <div><label>E-mail</label><input type="email" name="email" required></div>
+      <div><label data-pt="Navio" data-en="Vessel">Navio</label><input name="navio"></div>
+      <div><label data-pt="Serviço" data-en="Service">Serviço</label>
+        <select name="servico"><option>Ship chandling</option><option>Crew change</option><option data-pt="Suporte logístico" data-en="Logistics support">Suporte logístico</option></select></div>
+      <div><label>ETA</label><input type="date" name="eta"></div>
+      <div class="full"><label data-pt="Detalhes do pedido" data-en="Request details">Detalhes do pedido</label><textarea name="detalhes"></textarea></div>
+      <button class="btn full" type="submit" data-pt="Enviar pedido" data-en="Send request">Enviar pedido</button>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© <span id="yr"></span> WAVELELA — Maritime &amp; Logistics</span>
+  <span data-pt="Comércio · Suporte logístico · Prestação de serviços" data-en="Trading · Logistics support · Services">Comércio · Suporte logístico · Prestação de serviços</span>
+</div></footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  let lang = 'pt';
+  document.getElementById('langBtn').addEventListener('click', () => {
+    lang = lang === 'pt' ? 'en' : 'pt';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => el.innerHTML = el.dataset[lang]);
+    document.getElementById('langBtn').textContent = lang === 'pt' ? 'EN' : 'PT';
+  });
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => document.querySelector('nav').classList.remove('open')));
+  document.getElementById('quoteForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target));
+    const body = Object.entries(d).map(([k, v]) => k + ': ' + v).join('\n');
+    location.href = 'mailto:geral@wavelela.co.ao?subject=' + encodeURIComponent('Pedido de cotação - ' + (d.navio || d.empresa || '')) + '&body=' + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>
