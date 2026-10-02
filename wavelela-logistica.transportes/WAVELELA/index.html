@@ -29,6 +29,7 @@
   header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
   header .wrap{display:flex;align-items:center;justify-content:space-between;height:120px}
   .logo{display:flex;align-items:center;gap:16px}
+  .logo-img{display:block;height:72px;width:auto}
   .logo-mark{width:58px;height:58px;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:800}
   .logo-name{font-size:30px;font-weight:800;letter-spacing:.08em;color:var(--navy);line-height:1}
   .logo-sub{font-size:13px;letter-spacing:.22em;color:var(--muted);margin-top:8px}
@@ -142,7 +143,7 @@
     nav{padding:20px 16px}
     .topbar .wrap{flex-direction:column;gap:4px;font-size:11px}
     header .wrap{height:90px} nav{top:90px}
-    .logo-mark{width:46px;height:46px;font-size:30px}.logo-name{font-size:23px}.logo-sub{font-size:10px}
+    .logo-img{height:54px}.logo-mark{width:46px;height:46px;font-size:30px}.logo-name{font-size:23px}.logo-sub{font-size:10px}
     .hero{min-height:560px}.hero p{font-size:18px}.hero .actions{flex-direction:column;align-items:flex-start;gap:16px}
     section{padding:70px 0}
     .head-row{flex-direction:column;align-items:flex-start}
@@ -160,10 +161,7 @@
 </div></div>
 
 <header><div class="wrap">
-  <a href="#inicio" class="logo">
-    <div class="logo-mark">W</div>
-    <div><div class="logo-name">WAVELELA</div><div class="logo-sub">MARITIME &amp; LOGISTICS</div></div>
-  </a>
+  <a href="#inicio" class="logo"><img class="logo-img" src="img/logo-wavelela.jpg" alt="WAVELELA — Prestação de Serviços" width="428" height="128"></a>
   <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
   <nav>
     <a class="link" href="#servicos" data-pt="Serviços" data-en="Services">Serviços</a>
@@ -319,10 +317,7 @@
 </div></section>
 
 <footer><div class="wrap">
-  <a href="#inicio" class="logo">
-    <div class="logo-mark">W</div>
-    <div><div class="logo-name">WAVELELA</div><div class="logo-sub">MARITIME &amp; LOGISTICS</div></div>
-  </a>
+  <a href="#inicio" class="logo"><img class="logo-img" src="img/logo-wavelela.jpg" alt="WAVELELA — Prestação de Serviços" width="428" height="128"></a>
   <div>© <span id="yr"></span> Wavelela.<br>Comércio, Suporte Logístico &amp; Prestação de Serviços, Lda.</div>
   <a class="foot-link" href="#cotacao" data-pt="Preparar um pedido" data-en="Prepare a request">Preparar um pedido</a>
 </div></footer>
