@@ -248,7 +248,7 @@
       <h2 style="margin-top:18px" data-pt="Fale-nos da sua próxima escala." data-en="Tell us about your next port call.">Fale-nos da sua próxima escala.</h2>
       <p data-pt="Envie os detalhes e respondemos com uma proposta ajustada ao seu pedido." data-en="Send the details and we will reply with a proposal tailored to your request.">Envie os detalhes e respondemos com uma proposta ajustada ao seu pedido.</p>
       <ul class="contact-list">
-        <li>✉ geral@wavelela.co.ao</li>
+        <li>✉ geral@wavelela.com</li>
         <li>☎ +244 900 000 000</li>
         <li>⌖ Luanda, Angola</li>
       </ul>
@@ -286,7 +286,7 @@
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target));
     const body = Object.entries(d).map(([k, v]) => k + ': ' + v).join('\n');
-    location.href = 'mailto:geral@wavelela.co.ao?subject=' + encodeURIComponent('Pedido de cotação - ' + (d.navio || d.empresa || '')) + '&body=' + encodeURIComponent(body);
+    location.href = 'mailto:geral@wavelela.com?subject=' + encodeURIComponent('Pedido de cotação - ' + (d.navio || d.empresa || '')) + '&body=' + encodeURIComponent(body);
   });
 </script>
 </body>
