@@ -41,8 +41,9 @@
 
   /* Hero */
   .hero{position:relative;min-height:640px;display:flex;align-items:center;color:#fff;
-    background:linear-gradient(90deg,rgba(15,42,61,.92) 0%,rgba(15,42,61,.7) 45%,rgba(15,42,61,.15) 100%),
-               url("img/hero.jpg") center/cover no-repeat, linear-gradient(135deg,#1d4a66,#0f2a3d);}
+    background:linear-gradient(90deg,#0f2a3d 0%,rgba(15,42,61,.96) 42%,rgba(15,42,61,.45) 62%,rgba(15,42,61,.2) 100%),
+               url("img/hero-navio.webp") right center/auto 100% no-repeat, #0f2a3d;}
+  @media(max-width:900px){.hero{background:linear-gradient(90deg,rgba(15,42,61,.92),rgba(15,42,61,.75)),url("img/hero-navio.webp") center/cover no-repeat,#0f2a3d}}
   .hero .wrap{width:100%}
   .hero .eyebrow{color:var(--mint)}
   .hero h1{font-size:clamp(40px,5.2vw,74px);font-weight:400;line-height:1.12;letter-spacing:-.02em;margin:26px 0 30px;max-width:820px}
