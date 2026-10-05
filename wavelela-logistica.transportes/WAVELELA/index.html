@@ -27,14 +27,15 @@
 
   /* Header */
   header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;height:120px}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:32px;height:120px}
   .logo{display:flex;align-items:center;gap:16px}
   .logo-img{display:block;height:84px;width:auto}
   .logo-mark{width:58px;height:58px;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:800}
   .logo-name{font-size:30px;font-weight:800;letter-spacing:.08em;color:var(--navy);line-height:1}
   .logo-sub{font-size:13px;letter-spacing:.22em;color:var(--muted);margin-top:8px}
-  nav{display:flex;align-items:center;gap:34px}
-  nav a.link{font-size:17px;color:var(--ink)}
+  nav{display:flex;align-items:center;gap:26px}
+  nav a.link{font-size:17px;color:var(--ink);white-space:nowrap}
+  nav .btn{white-space:nowrap}
   nav a.link:hover{color:var(--teal)}
   .lang{border:1px solid var(--line);background:#fff;padding:10px 12px;font-size:16px;cursor:pointer;color:var(--ink)}
   .menu-btn{display:none;background:none;border:0;font-size:28px;cursor:pointer;color:var(--navy)}
@@ -142,7 +143,7 @@
   footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;padding-top:44px;padding-bottom:44px;flex-wrap:wrap}
   footer .foot-link{color:var(--teal);font-size:18px}
 
-  @media (max-width:1100px){
+  @media (max-width:1360px){
     nav{position:absolute;top:120px;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;padding:24px 48px;gap:20px;border-bottom:1px solid var(--line);display:none}
     nav.open{display:flex}
     .menu-btn{display:block}
@@ -175,6 +176,7 @@
   <a href="#inicio" class="logo"><img class="logo-img" src="img/logo-wavelela.webp" alt="WAVELELA — Prestação de Serviços · Transporte Marítimo &amp; Logística" width="612" height="168"></a>
   <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
   <nav>
+    <a class="link" href="#top" data-pt="Início" data-en="Home">Início</a>
     <a class="link" href="#servicos" data-pt="Serviços" data-en="Services">Serviços</a>
     <a class="link" href="#empresa" data-pt="A empresa" data-en="Company">A empresa</a>
     <a class="link" href="#como" data-pt="Como trabalhamos" data-en="How we work">Como trabalhamos</a>
