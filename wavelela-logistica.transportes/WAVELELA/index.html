@@ -118,6 +118,8 @@
   textarea{min-height:170px;resize:vertical}
   form .btn{border:0;cursor:pointer;font-size:19px;justify-self:start;padding:20px 34px}
   .form-note{color:#c6d3dc;font-size:15px;margin-top:-2px}
+  .form-status{font-size:16px;font-weight:700;margin:0}.form-status:empty{display:none}.form-status.ok{color:var(--mint)}.form-status.err{color:#ffb4a8}
+  button[disabled]{opacity:.6;cursor:wait}
   .company{margin-top:60px;padding-top:44px;border-top:1px solid #2c536d;color:#c6d3dc;font-size:17px;line-height:1.75}
   .company strong{display:block;color:#fff;font-size:17px;letter-spacing:.02em;margin-bottom:18px}
   .company small{display:block;margin-top:18px;font-size:15px}
@@ -340,7 +342,8 @@
       <div><label data-pt="Data prevista" data-en="Expected date">Data prevista</label><input type="date" name="data"></div>
       <div class="full"><label data-pt="Necessidades e especificações" data-en="Needs and specifications">Necessidades e especificações</label><textarea name="necessidades"></textarea></div>
       <button class="btn full" type="submit" data-pt="Fazer Pedido" data-en="Place Request">Fazer Pedido</button>
-      <p class="form-note full" data-pt="Este formulário prepara um ficheiro no seu dispositivo. O pedido não é enviado nem os dados guardados no site." data-en="This form prepares a file on your device. The request is not sent and no data is stored on the site.">Este formulário prepara um ficheiro no seu dispositivo. O pedido não é enviado nem os dados guardados no site.</p>
+      <p class="form-status full" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="form-note full" data-pt="Ao carregar em «Fazer Pedido», os dados são enviados por e-mail (com o pedido em .txt) para pedidos@wavelela.com." data-en="When you press «Place Request», your details are e-mailed (with the request as a .txt) to pedidos@wavelela.com.">Ao carregar em «Fazer Pedido», os dados são enviados por e-mail (com o pedido em .txt) para pedidos@wavelela.com.</p>
     </form>
   </div>
 </div></section>
@@ -361,16 +364,40 @@
     document.getElementById('langBtn').textContent = lang === 'pt' ? 'EN' : 'PT';
   });
   document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => document.querySelector('nav').classList.remove('open')));
-  document.getElementById('quoteForm').addEventListener('submit', e => {
+  document.getElementById('quoteForm').addEventListener('submit', async e => {
     e.preventDefault();
-    const d = Object.fromEntries(new FormData(e.target));
+    const f = e.target, btn = f.querySelector('button[type=submit]'), st = document.getElementById('formStatus');
+    const en = document.documentElement.lang === 'en';
+    const d = Object.fromEntries(new FormData(f));
     const labels = {nome:'Nome', empresa:'Empresa', email:'E-mail', servico:'Serviço', porto:'Porto / local', navio:'Navio', data:'Data prevista', necessidades:'Necessidades e especificações'};
-    const body = 'PEDIDO DE COTAÇÃO — WAVELELA\n\n' + Object.entries(d).map(([k, v]) => (labels[k] || k) + ': ' + v).join('\n') + '\n\nEnviar para: geral@wavelela.com';
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([body], {type: 'text/plain;charset=utf-8'}));
-    a.download = 'pedido-wavelela-' + (d.navio || 'cotacao').replace(/\s+/g, '-').toLowerCase() + '.txt';
-    a.click();
-    URL.revokeObjectURL(a.href);
+    const body = 'PEDIDO DE COTAÇÃO — WAVELELA\n\n' + Object.entries(d).map(([k, v]) => (labels[k] || k) + ': ' + v).join('\n') + '\n\nEnviado a partir do website em ' + new Date().toLocaleString('pt-PT');
+    const fname = 'pedido-wavelela-' + (d.navio || d.nome || 'cotacao').trim().replace(/\s+/g, '-').toLowerCase() + '.txt';
+    const to = 'pedidos@wavelela.com';
+    const subject = 'Pedido de cotação — ' + (d.empresa || d.nome) + (d.navio ? ' — ' + d.navio : '');
+    const show = (ok, pt, enTxt) => { st.textContent = en ? enTxt : pt; st.className = 'form-status full ' + (ok ? 'ok' : 'err'); };
+    btn.disabled = true; show(true, 'A enviar o pedido…', 'Sending your request…');
+    const fd = new FormData();
+    Object.entries(d).forEach(([k, v]) => fd.append(labels[k] || k, v));
+    fd.append('Pedido (.txt)', body);
+    fd.append('_subject', subject);
+    fd.append('_replyto', d.email);
+    fd.append('_template', 'box');
+    fd.append('_captcha', 'false');
+    const send = async withFile => {
+      const x = new FormData(); fd.forEach((v, k) => x.append(k, v));
+      if (withFile) x.append('attachment', new File([body], fname, {type: 'text/plain'}));
+      const r = await fetch('https://formsubmit.co/ajax/' + to, {method: 'POST', headers: {Accept: 'application/json'}, body: x});
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || r.status);
+    };
+    try {
+      try { await send(true); } catch (e1) { if (/activat/i.test(e1.message)) throw e1; await send(false); }
+      show(true, 'Pedido enviado com sucesso. A equipa WAVELELA entrará em contacto em breve.', 'Request sent successfully. The WAVELELA team will be in touch shortly.');
+      f.reset();
+    } catch (err) {
+      show(false, 'Não foi possível enviar automaticamente. Abrimos o seu e-mail com o pedido pronto — basta carregar em Enviar.', 'Automatic sending failed. We opened your e-mail with the request ready — just press Send.');
+      location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    } finally { btn.disabled = false; }
   });
 </script>
 </body>
